@@ -8,8 +8,7 @@ from app.repositories.contact_repository import ContactRepository
 router = APIRouter(prefix="/contacts", tags=["contacts"])
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED,
-             response_model=ContactResponse)
+@router.post("/", status_code=status.HTTP_201_CREATED, response_model=ContactResponse)
 @inject
 async def create_contact(
     payload: ContactCreate,
@@ -19,16 +18,14 @@ async def create_contact(
     existing = await repo.get(phone_normalized)
     if existing:
         raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Контакт уже существует"
+            status_code=status.HTTP_409_CONFLICT, detail="Контакт уже существует"
         )
 
     await repo.create(phone_normalized, payload.address)
     return {"phone": phone_normalized, "address": payload.address}
 
 
-@router.get("/{phone}", status_code=status.HTTP_200_OK,
-            response_model=ContactResponse)
+@router.get("/{phone}", status_code=status.HTTP_200_OK, response_model=ContactResponse)
 @inject
 async def get_contact(
     phone: RUNumberType,
@@ -42,8 +39,7 @@ async def get_contact(
     return {"phone": phone, "address": address}
 
 
-@router.put("/{phone}", status_code=status.HTTP_200_OK,
-            response_model=ContactResponse)
+@router.put("/{phone}", status_code=status.HTTP_200_OK, response_model=ContactResponse)
 @inject
 async def update_contact(
     payload: ContactUpdate,

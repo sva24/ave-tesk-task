@@ -12,23 +12,25 @@ RUNumberType = Annotated[
 
 class ContactResponse(BaseModel):
     phone: str = Field(
-        ..., example="+78005553535",
-        description="Номер телефона"
+        ..., description="Номер телефона", json_schema_extra={"example": "+78005553535"}
     )
     address: str = Field(
-        ..., min_length=10, example="Москва, ул. Ленина 1",
-        description="Адрес контакта"
+        ...,
+        min_length=10,
+        description="Адрес контакта",
+        json_schema_extra={"example": "Москва, ул. Ленина 1"},
     )
 
 
 class ContactCreate(BaseModel):
     phone: RUNumberType = Field(
-        ..., example="+78005553535",
-        description="Номер телефона"
+        ..., description="Номер телефона", json_schema_extra={"example": "+78005553535"}
     )
     address: str = Field(
-        ..., min_length=10, example="Москва, ул. Ленина 1",
-        description="Адрес контакта"
+        ...,
+        min_length=10,
+        description="Адрес контакта",
+        json_schema_extra={"example": "Москва, ул. Ленина 1"},
     )
 
 
@@ -36,6 +38,6 @@ class ContactUpdate(BaseModel):
     address: str = Field(
         ...,
         min_length=10,
-        example="Москва, ул. Ленина, дом 20",
         description="Новый адрес контакта",
+        json_schema_extra={"example": "Москва, ул. Ленина, дом 20"},
     )
