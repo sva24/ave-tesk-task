@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ave rest"
+version = "0.1.0"
+description = "Тестовое задание для Ave Technologies"
+authors = ["Vladimir Silin <sva@itx24.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.124.0"
+uvicorn = {extras = ["standard"], version = "^0.38.0"}
+redis = "^7.1.0"
+pydantic-extra-types = "^2.10.6"
+phonenumbers = "^9.0.20"
+dishka = "^1.7.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
