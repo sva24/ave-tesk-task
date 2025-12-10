@@ -1,4 +1,5 @@
 from redis.asyncio import Redis
+
 from app.repositories.contact_repository import ContactRepository
 
 

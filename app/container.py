@@ -1,9 +1,11 @@
+import logging
 from typing import AsyncGenerator
+
+from dishka import Provider, Scope, provide
 from redis.asyncio import Redis
+
 from app.repositories.contact_redis import RedisContactRepository
 from app.repositories.contact_repository import ContactRepository
-from dishka import Provider, provide, Scope
-import logging
 
 logger = logging.getLogger(__name__)
 

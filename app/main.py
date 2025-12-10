@@ -1,15 +1,17 @@
 import logging
-from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from dishka.integrations.fastapi import setup_dishka, FastapiProvider
-from app.container import AppProvider
+
 from dishka import make_async_container
+from dishka.integrations.fastapi import FastapiProvider, setup_dishka
+from fastapi import FastAPI
+
 from app.api.v1.contacts.router import router as contacts_router
+from app.container import AppProvider
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
